@@ -15,8 +15,63 @@ const mockData = [
 		tension: "220v",
 		created_at: "2023-07-17T03:08:22.000000Z",
 		updated_at: "2023-07-17T03:08:22.000000Z",
-		brand: "LG",
+		brand: "Brastemp",
 		price: 2000
+	},
+	{
+		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
+		name: "Geladeira",
+		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
+		description: "Geladeira nova com diversas cores para escolher.",
+		tension: "220v",
+		brand: "LG",
+		price: 2000,
+		created_at: "2023-07-17T03:37:23.000000Z",
+		updated_at: "2023-07-17T03:37:23.000000Z"
+	},
+	{
+		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
+		name: "Geladeira",
+		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
+		description: "Geladeira nova com diversas cores para escolher.",
+		tension: "220v",
+		brand: "LG",
+		price: 2000,
+		created_at: "2023-07-17T03:37:23.000000Z",
+		updated_at: "2023-07-17T03:37:23.000000Z"
+	},
+	{
+		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
+		name: "Geladeira",
+		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
+		description: "Geladeira nova com diversas cores para escolher.",
+		tension: "220v",
+		brand: "LG",
+		price: 2000,
+		created_at: "2023-07-17T03:37:23.000000Z",
+		updated_at: "2023-07-17T03:37:23.000000Z"
+	},
+	{
+		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
+		name: "Geladeira",
+		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
+		description: "Geladeira nova com diversas cores para escolher.",
+		tension: "220v",
+		brand: "LG",
+		price: 2000,
+		created_at: "2023-07-17T03:37:23.000000Z",
+		updated_at: "2023-07-17T03:37:23.000000Z"
+	},
+	{
+		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
+		name: "Geladeira",
+		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
+		description: "Geladeira nova com diversas cores para escolher.",
+		tension: "220v",
+		brand: "LG",
+		price: 2000,
+		created_at: "2023-07-17T03:37:23.000000Z",
+		updated_at: "2023-07-17T03:37:23.000000Z"
 	},
 	{
 		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
@@ -40,7 +95,7 @@ export default function Home() {
       <Banner/>
       <main className="mb-20 px-6">
         <section className="mt-[40px]">
-          <ul className="flex flex-row gap-10 overflow-auto h-[400px]">
+          <ul className="flex flex-row gap-10 overflow-auto h-[400px] md:flex-wrap md:overflow-hidden md:h-auto">
             {mockData.map((elem) => (<Card key={elem.id} eletro={elem}/>))}
           </ul>
         </section>
