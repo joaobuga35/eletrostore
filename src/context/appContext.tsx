@@ -5,6 +5,7 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useEffect,
   useState,
 } from "react";
 
@@ -19,6 +20,7 @@ interface IEletros {
     description:string;
     tension: string;
     brand: string;
+    price: number;
     createdAt: string;
     updatedAt: string;
 }
@@ -39,7 +41,9 @@ interface appProviderData {
           setEletros(response.data);
         } catch (error) {}
       }
-    
+    useEffect(() => {
+      getEletros()
+    },[])
   return (
     <AppContext.Provider
       value={{
@@ -53,5 +57,6 @@ interface appProviderData {
 
 export {
     AppContext,
-    AppProvider
+    AppProvider,
+    type IEletros
 }

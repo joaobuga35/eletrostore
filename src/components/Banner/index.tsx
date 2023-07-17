@@ -1,7 +1,7 @@
 
 const Banner = () => {
     return (
-      <div className="relative w-full h-[400px] mb-8">
+      <div className="relative w-full h-[200px] mb-8 md:h-[400px]">
         <div className="absolute inset-0 bg-center bg-no-repeat z-0 flex items-end md:items-center lg:items-center justify-center overflow-hidden">
         </div>
         <div className="relative w-full h-full z-0">
