@@ -1,106 +1,38 @@
-"use client"
+"use client";
 import Banner from "@/components/Banner";
 import Card from "@/components/Card";
 import Footer from "@/components/Footer.tsx";
 import Header from "@/components/Header/index";
+import ModalCreate from "@/components/Modal";
+import ModalEditDelete from "@/components/ModalEditAndDelete";
 import { AppContext } from "@/context/appContext";
-import { useContext } from "react";
-
-const mockData = [
-	{
-		id: "99aa360b-a77b-4f08-a462-bc4f61476552",
-		name: "Geladeira",
-		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
-		description: "Geladeira nova com diversas cores para escolher.",
-		tension: "220v",
-		created_at: "2023-07-17T03:08:22.000000Z",
-		updated_at: "2023-07-17T03:08:22.000000Z",
-		brand: "Brastemp",
-		price: 2000
-	},
-	{
-		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
-		name: "Geladeira",
-		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
-		description: "Geladeira nova com diversas cores para escolher.",
-		tension: "220v",
-		brand: "LG",
-		price: 2000,
-		created_at: "2023-07-17T03:37:23.000000Z",
-		updated_at: "2023-07-17T03:37:23.000000Z"
-	},
-	{
-		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
-		name: "Geladeira",
-		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
-		description: "Geladeira nova com diversas cores para escolher.",
-		tension: "220v",
-		brand: "LG",
-		price: 2000,
-		created_at: "2023-07-17T03:37:23.000000Z",
-		updated_at: "2023-07-17T03:37:23.000000Z"
-	},
-	{
-		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
-		name: "Geladeira",
-		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
-		description: "Geladeira nova com diversas cores para escolher.",
-		tension: "220v",
-		brand: "LG",
-		price: 2000,
-		created_at: "2023-07-17T03:37:23.000000Z",
-		updated_at: "2023-07-17T03:37:23.000000Z"
-	},
-	{
-		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
-		name: "Geladeira",
-		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
-		description: "Geladeira nova com diversas cores para escolher.",
-		tension: "220v",
-		brand: "LG",
-		price: 2000,
-		created_at: "2023-07-17T03:37:23.000000Z",
-		updated_at: "2023-07-17T03:37:23.000000Z"
-	},
-	{
-		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
-		name: "Geladeira",
-		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
-		description: "Geladeira nova com diversas cores para escolher.",
-		tension: "220v",
-		brand: "LG",
-		price: 2000,
-		created_at: "2023-07-17T03:37:23.000000Z",
-		updated_at: "2023-07-17T03:37:23.000000Z"
-	},
-	{
-		id: "99aa406b-dd74-40ba-9932-c2b687f1f16b",
-		name: "Geladeira",
-		image: "https:\/\/consul.vtexassets.com\/arquivos\/ids\/231389-800-auto?v=638004093349600000&width=800&height=auto&aspect=true",
-		description: "Geladeira nova com diversas cores para escolher.",
-		tension: "220v",
-		brand: "LG",
-		price: 2000,
-		created_at: "2023-07-17T03:37:23.000000Z",
-		updated_at: "2023-07-17T03:37:23.000000Z"
-	}
-]
+import { useContext, useState } from "react";
 
 export default function Home() {
-  const {eletros} = useContext(AppContext);
-
+  const { eletros, modal, modalEdit } = useContext(AppContext);
   return (
     <>
-      <Header/>
-      <Banner/>
+      {modal && <ModalCreate />}
+      {modalEdit && <ModalEditDelete />}
+      <Header />
+      <Banner />
       <main className="mb-20 px-6">
-        <section className="mt-[40px]">
-          <ul className="flex flex-row gap-10 overflow-auto h-[400px] md:flex-wrap md:overflow-hidden md:h-auto">
-            {mockData.map((elem) => (<Card key={elem.id} eletro={elem}/>))}
-          </ul>
+        <section className="mt-[40px] flex justify-center items-center">
+          {eletros.length === 0 ? (
+            <div className="h-[250px] w-[250px] bg-gray-4 flex gap-3 flex-col justify-center items-center px-4 md:h-[200px] md:w-[600px]">
+				Você ainda não possui Eletros cadastrados!
+				<p>Após criar é só clicar no card para deletar ou editar</p>
+			</div>
+          ) : (
+            <ul className="flex flex-row gap-10 overflow-auto h-[400px] md:flex-wrap md:overflow-hidden md:h-auto">
+              {eletros.map((elem) => (
+                <Card key={elem.id} eletro={elem} />
+              ))}
+            </ul>
+          )}
         </section>
       </main>
-      <Footer/>
+      <Footer />
     </>
-  )
+  );
 }

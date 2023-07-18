@@ -36,6 +36,7 @@ module.exports = {
           10: "#FDFDFD",
           white: "#ffffff",
         },
+        
         feedback: {
           alert1: "#CD2B31",
           alert2: "#FDD8D8",

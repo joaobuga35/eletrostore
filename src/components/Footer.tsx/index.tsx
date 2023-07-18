@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { fontInter } from "../../app/styles/fonts";
 

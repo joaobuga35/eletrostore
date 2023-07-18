@@ -1,4 +1,6 @@
 import { AppProvider } from '@/context/appContext'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './styles/globals.css'
 
 export default function RootLayout({
@@ -12,6 +14,7 @@ export default function RootLayout({
         <AppProvider>
           {children}
         </AppProvider>
+        <ToastContainer/>
       </body>
     </html>
   )
