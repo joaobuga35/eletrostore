@@ -35,6 +35,6 @@ Interface criada para interagir com a API eletros.
            
          
     ```
-  <h5>Muito importante rodar o back-end antes de rodar o front. Após rodar o npm run dev, o ambiente já está pronto para ser testado. O terminal vai indicar o link para teste do front-end</h5>
+  <h5>Muito importante rodar o back-end antes de rodar o front. Após rodar o npm run dev, o ambiente já estará pronto para ser testado. O terminal vai indicar o link para teste do front-end</h5>
 
 
