@@ -26,12 +26,15 @@ Interface criada para interagir com a API eletros.
 
   <h4>2º passo</h4>
   Certifique-se de ter o node instalado em sua máquina, de preferência acima da versão 16.
-      ```bash
-      #instala todas as dependências necessárias
-      $ npm install
-      
-      $ npm run dev
-      ```
+  ```bash
+           
+         #instala todas as dependências necessárias
+         $ npm install
+         #ligar o servidor
+         $ npm run dev
+           
+         
+    ```
   <h5>Muito importante rodar o back-end antes de rodar o front. Após rodar o npm run dev, o ambiente já está pronto para ser testado. O terminal vai indicar o link para teste do front-end</h5>
 
 
