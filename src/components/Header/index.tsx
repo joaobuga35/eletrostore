@@ -17,9 +17,6 @@ const Header = () => {
           <button className="font-semibold text-base text-gray-2 cursor-pointer" onClick={() => setModal(true)}>
             Criar eletro
           </button>
-          <button className="w-full cursor-pointer md:w-max button-grey-outline h-max rounded-[0.25rem] font-semibold null transition-colors button-big">
-            Editar eletro
-          </button>
         </nav>
       </div>
     </header>

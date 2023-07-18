@@ -4,14 +4,16 @@ import Card from "@/components/Card";
 import Footer from "@/components/Footer.tsx";
 import Header from "@/components/Header/index";
 import ModalCreate from "@/components/Modal";
+import ModalEditDelete from "@/components/ModalEditAndDelete";
 import { AppContext } from "@/context/appContext";
 import { useContext, useState } from "react";
 
 export default function Home() {
-  const { eletros, modal } = useContext(AppContext);
+  const { eletros, modal, modalEdit } = useContext(AppContext);
   return (
     <>
       {modal && <ModalCreate />}
+	  {modalEdit && <ModalEditDelete/>}
       <Header />
       <Banner />
       <main className="mb-20 px-6">

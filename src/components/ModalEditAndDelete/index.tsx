@@ -1,33 +1,42 @@
 "use client";
 import { useForm } from "react-hook-form";
 import Input from "../Input";
-import { eletroData, eletroSchema } from "@/schemas/eletro.schema";
+import { eletroData, eletroDataEdit, eletroEditSchema, eletroSchema } from "@/schemas/eletro.schema";
 import { zodResolver } from "@hookForm/resolvers/zod";
 import { useContext } from "react";
 import { AppContext } from "@/context/appContext";
 
-const ModalCreate = () => {
-  const { setModal, registerEletro } = useContext(AppContext);
+const ModalEditDelete = () => {
+  const { setModalEdit, filterEletros, updateEletro, deleteEletros } = useContext(AppContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<eletroData>({
+  } = useForm<eletroDataEdit>({
     mode: "onSubmit",
-    resolver: zodResolver(eletroSchema),
+    resolver: zodResolver(eletroEditSchema),
+    defaultValues:{
+      name: filterEletros.length > 0 ? filterEletros[0].name : "",
+      image: filterEletros.length > 0 ? filterEletros[0].image : "",
+      description: filterEletros.length > 0 ? filterEletros[0].description : "",
+      tension: filterEletros.length > 0 ? filterEletros[0].tension : "",
+      brand: filterEletros.length > 0 ? filterEletros[0].brand : "",
+      price: filterEletros.length > 0 ? filterEletros[0].price : "",
+    }
   });
 
-  const submit = (formData: eletroData) => {
-    registerEletro(formData);
-    setModal(false)
+  const submit = (formData: eletroDataEdit) => {
+    updateEletro(formData)
+    setModalEdit(false)
   };
 
   return (
     <div className="modal-wrapper z-50">
       <div className="modal-container">
         <div className="h-[40px] text-white-200 bg-blue flex justify-between items-center rounded-t px-4 mb-2">
-          <h2 className="text-[16px]">Adicionar Eletro</h2>
-          <button type="button" onClick={() => setModal(false)}>
+          <h2 className="text-[16px]">Editar ou Deletar Eletro</h2>
+          <button type="button" onClick={() => setModalEdit(false)}>
             X
           </button>
         </div>
@@ -40,7 +49,6 @@ const ModalCreate = () => {
             colorText="text-gray-1"
             register={register("name")}
           />
-          {errors.name && <p className="error">{errors.name.message}</p>}
           <Input
             id="image"
             label="Imagem"
@@ -49,7 +57,6 @@ const ModalCreate = () => {
             colorText="text-gray-1"
             register={register("image")}
           />
-          {errors.image && <p className="error">{errors.image.message}</p>}
           <Input
             id="description"
             label="Descrição"
@@ -58,9 +65,6 @@ const ModalCreate = () => {
             colorText="text-gray-1"
             register={register("description")}
           />
-          {errors.description && (
-            <p className="error">{errors.description.message}</p>
-          )}
           <Input
             id="tension"
             label="Voltagem"
@@ -69,7 +73,6 @@ const ModalCreate = () => {
             colorText="text-gray-1"
             register={register("tension")}
           />
-          {errors.tension && <p className="error">{errors.tension.message}</p>}
           <div className="mb-4 flex flex-col gap-1">
             <label className="text-gray-1 text-xs" htmlFor="brand">
               Marca
@@ -84,7 +87,6 @@ const ModalCreate = () => {
               <option value="Fischer">Fischer</option>
               <option value="Electrolux">Electrolux</option>
             </select>
-            {errors.brand && <p className="error">{errors.brand.message}</p>}
           </div>
           <Input
             id="price"
@@ -94,13 +96,19 @@ const ModalCreate = () => {
             colorText="text-gray-1"
             register={register("price")}
           />
-          {errors.price && <p className="error">{errors.price.message}</p>}
-          <div className="mb-4">
+          <div className="mb-4 flex gap-2">
             <button
               className="w-full cursor-pointer rounded-[0.25rem] button-grey-outline"
               type="submit"
             >
               Salvar Eletro
+            </button>
+            <button
+              onClick={() => {deleteEletros(), setModalEdit(false)}}
+              className="w-full cursor-pointer rounded-[0.25rem] button-grey-outline"
+              type="submit"
+            >
+              Deletar Eletro
             </button>
           </div>
         </form>
@@ -109,4 +117,4 @@ const ModalCreate = () => {
   );
 };
 
-export default ModalCreate;
+export default ModalEditDelete;

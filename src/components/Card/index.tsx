@@ -1,9 +1,19 @@
-import { IEletros } from "@/context/appContext";
+import { AppContext, IEletros } from "@/context/appContext";
+import { useContext } from "react";
 
 const Card = (eletro: any) => {
+  const { setModalEdit, setFilterEletros, eletros } = useContext(AppContext);
+
+  const filterAll = (id: string) => {
+    const oneEletro = eletros.filter((elem) => elem.id === id);
+    setFilterEletros(oneEletro);
+  };
   return (
     <>
-      <li className="w-auto h-auto md:mb-5 border-2 border-white hover:border-solid hover:border-brand-1 hover:border-2 cursor-pointer ">
+      <li onClick={() =>{
+          filterAll(eletro.eletro.id);
+          setModalEdit(true);
+        }} className="w-auto h-auto md:mb-5 border-2 border-white hover:border-solid hover:border-brand-1 hover:border-2 cursor-pointer ">
         <figure className="bg-gray-7 mb-4 flex justify-center items-center w-[295px] h-[200px]">
           <img
             className="w-[200px] h-[200px]"
