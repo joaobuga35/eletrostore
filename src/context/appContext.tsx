@@ -9,7 +9,7 @@ import {
   useEffect,
   useState,
 } from "react";
-
+import { toast } from "react-toastify";
 interface Props {
   children: ReactNode;
 }
@@ -51,6 +51,16 @@ function AppProvider({ children }: Props) {
   const registerEletro = async (eletroDatas: eletroData) => {
     try {
       const response = await api.post("/eletros", eletroDatas);
+      toast.success("Eletrodoméstico criado com sucesso!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     } catch (error) {
       console.error(error);
     }
@@ -59,12 +69,32 @@ function AppProvider({ children }: Props) {
   const updateEletro = async (eletroDatas: eletroDataEdit) => {
     try {
       const response = await api.patch(`/eletros/${id}`, eletroDatas);
+      toast.success("Eletrodoméstico editado com sucesso!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     } catch (error) {}
   };
 
   async function deleteEletros() {
     try {
       const response = await api.delete(`/eletros/${id}`);
+      toast.success("Eletrodoméstico deletado com sucesso!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     } catch (error) {}
   }
   async function getEletros() {
@@ -77,7 +107,7 @@ function AppProvider({ children }: Props) {
 
   useEffect(() => {
     getEletros();
-  }, []);
+  }, [modal, modalEdit]);
 
   return (
     <AppContext.Provider
